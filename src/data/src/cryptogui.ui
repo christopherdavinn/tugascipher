@@ -94,7 +94,7 @@ font: 500 18pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
     </widget>
    </widget>
-   <widget class="QPlainTextEdit" name="inputText">
+   <widget class="QPlainTextEdit" name="textInput">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -121,7 +121,7 @@ QPlainTextEdit:hover {
      <string/>
     </property>
    </widget>
-   <widget class="QPushButton" name="inputFileButton">
+   <widget class="QPushButton" name="inputBut">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -154,10 +154,10 @@ QPushButton:pressed {
 </string>
     </property>
     <property name="text">
-     <string>Input File</string>
+     <string>Input your file here!</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="cipherAlgorithmComboBox">
+   <widget class="QComboBox" name="cipheroption">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -263,7 +263,7 @@ font: 550 14pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>Plain Text</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="encryptDecryptButton">
+   <widget class="QPushButton" name="cryptBut">
     <property name="geometry">
      <rect>
       <x>70</x>
@@ -313,7 +313,7 @@ font: 550 14pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>Key</string>
     </property>
    </widget>
-   <widget class="QPlainTextEdit" name="inputText_2">
+   <widget class="QPlainTextEdit" name="keyInput">
     <property name="geometry">
      <rect>
       <x>70</x>
