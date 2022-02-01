@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1124</width>
+    <height>868</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(21, 45, 53);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>10</y>
+      <width>321</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(52, 91, 99);
+font-family: &quot;Cascadia Code SemiBold&quot;;
+border: 2px solid black;
+border-radius: 5px;
+font-size: 10px;
+color: #D4ECDD;</string>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Classic Cryptography&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="outputTextArea">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>110</y>
+      <width>841</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #D4ECDD;
+font-size: 15px;
+font-weight: bold;
+border-radius: 20px;
+border: 3px solid black;
+font: 75 18pt &quot;Cascadia Code&quot;;
+padding: 10px;
+color: #112031</string>
+    </property>
+    <property name="plainText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cipherAlgorithmComboBox">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>670</y>
+      <width>391</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(212, 236, 221);
+font: 75 10pt &quot;Cascadia Code&quot;;
+padding-left: 10px;
+border: none;</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Vignere Cipher Standard Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Vignere Cipher Standard Decrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Full Vignere Cipher Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Full Vignere Cipher Decrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Auto Key Vignere Cipher Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Auto Key Vignere Cipher Decrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Extended Vignere Cipher Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Extended Vignere Cipher Decrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Playfair Cipher Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Playfair Cipher Decrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Affine Cipher Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Affine Cipher Decrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hill Cipher Encrypt</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Hill Cipher Decrypt</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="encryptDecryptButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>710</y>
+      <width>391</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #D4ECDD;
+font: 75 10pt &quot;Cascadia Code&quot;;
+border: 2px solid #D4ECDD;
+border-radius: 5px;</string>
+    </property>
+    <property name="text">
+     <string>Encrypt / Decrypt</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="inputText">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>530</y>
+      <width>401</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid #D4ECDD;
+border-radius: 5px;
+color: rgb(212, 236, 221);
+padding: 5px;
+font: 75 13pt &quot;Cascadia Code&quot;;</string>
+    </property>
+    <property name="plainText">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="inputFileButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>540</y>
+      <width>391</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #D4ECDD;
+font: 75 20pt &quot;Cascadia Code&quot;;
+border: 2px solid #D4ECDD;
+border-radius: 5px;</string>
+    </property>
+    <property name="text">
+     <string>Input File</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>500</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #D4ECDD;
+font: 75 13pt &quot;Cascadia Code&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Text Input</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>80</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #D4ECDD;
+font: 75 13pt &quot;Cascadia Code&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Text Output</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>640</y>
+      <width>111</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #D4ECDD;
+font: 75 13pt &quot;Cascadia Code&quot;;</string>
+    </property>
+    <property name="text">
+     <string>Key Input</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="inputText_2">
+    <property name="geometry">
+     <rect>
+      <x>160</x>
+      <y>670</y>
+      <width>401</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 2px solid #D4ECDD;
+border-radius: 5px;
+color: rgb(212, 236, 221);
+padding: 5px;
+font: 75 13pt &quot;Cascadia Code&quot;;</string>
+    </property>
+    <property name="plainText">
+     <string/>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1124</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
