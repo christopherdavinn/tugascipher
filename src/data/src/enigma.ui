@@ -16,7 +16,7 @@
   <property name="styleSheet">
    <string notr="true">background-color: #ffffff</string>
   </property>
-  <widget class="QPushButton" name="backBut">
+  <widget class="QPushButton" name="enigmaBut_2">
    <property name="geometry">
     <rect>
      <x>30</x>

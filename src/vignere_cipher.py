@@ -60,11 +60,11 @@ def vigenere_cipher_standard_encrypt(plain_text: str, key: str):
     key = clean_text(key)
     full_key = generate_key_standard(plain_text, key)
 
-    return vignere_cipher_encrypt(plain_text, full_key)
+    return vigenere_cipher_encrypt(plain_text, full_key)
 
 def vigenere_cipher_standard_decrypt(cipher_text: str, key: str):
     cipher_text = clean_text(cipher_text)
     key = clean_text(key)
     full_key = generate_key_standard(cipher_text, key)
 
-    return vignere_cipher_decrypt(cipher_text, full_key)
+    return vigenere_cipher_decrypt(cipher_text, full_key)
