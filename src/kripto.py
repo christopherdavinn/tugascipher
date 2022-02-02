@@ -1,17 +1,14 @@
-from PyQt5 import QtCore, QtWidgets
+from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from PyQt5.uic import loadUi
 import sys
-import numpy as np
 
 import extendedVigenere
 import playfairCipher
 import vignere_cipher
 
-
 import uuid
 import os
-
 
 #initial load crypto GUI
 class enigmaScreen(QDialog):
@@ -29,7 +26,7 @@ class enigmaScreen(QDialog):
 
 class mainScreen(QMainWindow):
     def __init__(self):
-        #setup screen
+        #setup cipher screen (main screen)
         super(mainScreen, self).__init__()
         loadUi("data/src/cryptogui.ui", self)
         
@@ -69,22 +66,22 @@ class mainScreen(QMainWindow):
         if(len(key) == 0):
             return
 
-        res = ""
+        result = ""
 
-        # Encrypt
+#encrypt code
         if("encrypt" in cipherMethod.lower()):
             if cipherMethod == "Vigenere Cipher Standard Encrypt":
                 cipherText = vignere_cipher.vigenere_cipher_standard_encrypt(pt, key)
 
-                res += "Cipher Text:\n\n"
-                res += cipherText
-                res += "\n"
-                res += ' '.join([cipherText[i: i+5] for i in range(0, len(cipherText), 5)])
+                result += "Cipher Text:\n\n"
+                result += cipherText
+                result += "\n"
+                result += ' '.join([cipherText[i: i+5] for i in range(0, len(cipherText), 5)])
 
             elif cipherMethod == "Extended Vigenere Cipher Encrypt":
                 if(self.pathFile != ""):
                     dir_path = os.path.dirname(os.path.realpath(__file__))
-                    filename = "data/res/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
+                    filename = "data/output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(dir_path, filename)
 
@@ -95,56 +92,36 @@ class mainScreen(QMainWindow):
                     )
 
                     if(success):
-                        res += "Success Encrypt File, Please Check This Directory:\n"
-                        res += full_path
+                        result += "Encrypt success!\n\n"
+                        result += "Filename: %s" %(filename)
                     else:
-                        res += "Fail encrypt file"
+                        result += "Fail encrypt file"
                 else:
-                    res = "Please input file!"
+                    result = "Please input file!"
 
             elif cipherMethod == "Playfair Cipher Encrypt":
                 # encryption
                 playfairSquare = playfairCipher.generatePlayfairSquare(key)
-                res += playfairCipher.encrypt(pt, playfairSquare) + '\n\n'
+                result += playfairCipher.encrypt(pt, playfairSquare) + '\n\n'
                 for i in range(len(playfairSquare)):
                     for j in range(len(playfairSquare[0])):
-                        res += ('{} '.format(playfairSquare[i][j]))
-                    res += '\n'   
+                        result += ('{} '.format(playfairSquare[i][j]))
+                    result += '\n'   
 
-            elif cipherMethod == "Extended Vigenere Cipher Encrypt":
-                if(self.pathFile != ""):
-                    dir_path = os.path.dirname(os.path.realpath(__file__))
-                    filename = "data/res/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
-
-                    full_path = os.path.join(dir_path, filename)
-
-                    success = extendedVigenere.extended_vigenere_cipher_encrypt(
-                        self.pathFile, 
-                        key, 
-                        full_path
-                    )
-
-                    if(success):
-                        res += "Success Encrypt File, Please Check This Directory:\n"
-                        res += full_path
-                    else:
-                        res += "Fail encrypt file"
-                else:
-                    res = "Please input file!"
-
+#decrypt code
         else:
             if cipherMethod == "Vigenere Cipher Standard Decrypt":
                 plainText = vignere_cipher.vigenere_cipher_standard_decrypt(pt, key)
 
-                res += "Plain Text:\n\n"
-                res += plainText
-                res += "\n"
-                res += ' '.join([plainText[i: i+5] for i in range(0, len(plainText), 5)])
+                result += "Plain Text:\n\n"
+                result += plainText
+                result += "\n"
+                result += ' '.join([plainText[i: i+5] for i in range(0, len(plainText), 5)])
 
             elif cipherMethod == "Extended Vigenere Cipher Decrypt":
                 if(self.pathFile != ""):
                     dir_path = os.path.dirname(os.path.realpath(__file__))
-                    filename = "data/res/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
+                    filename = "data/output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(dir_path, filename)
 
@@ -155,37 +132,37 @@ class mainScreen(QMainWindow):
                     )
 
                     if(success):
-                        res += "Success Decrypt File, Please Check This Directory:\n"
-                        res += full_path
+                        result += "Success Decrypt File, Please Check This Directory:\n"
+                        result += full_path
                     else:
-                        res += "Fail decrypt file"
+                        result += "Fail decrypt file"
                 else:
-                    res = "Please input file!"
+                    result = "Please input file!"
 
             elif cipherMethod == "Playfair Cipher Decrypt":
                 playfairSquare = playfairCipher.generatePlayfairSquare(key)
-                res += playfairCipher.decrypt(pt, playfairSquare) + '\n\n'
+                result += playfairCipher.decrypt(pt, playfairSquare) + '\n\n'
                 for i in range(len(playfairSquare)):
                     for j in range(len(playfairSquare[0])):
-                        res += ('{} '.format(playfairSquare[i][j]))
-                    res += '\n'
+                        result += ('{} '.format(playfairSquare[i][j]))
+                    result += '\n'
 
         if("Extended Vigenere Cipher" not in cipherMethod):
             dir_path = os.path.dirname(os.path.realpath(__file__))
-            filename = "data/res/" + str(uuid.uuid4()) + ".txt"
+            filename = "data/output/" + str(uuid.uuid4()) + ".txt"
 
             full_path = os.path.join(dir_path, filename)
             f = open(full_path, 'w')
-            f.write(res)
+            f.write(result)
 
-            res += "\n\n"
-            res += "This Result Has Been Saved, Please Check This Directory:\n"
-            res += full_path
+            result += "\n\n"
+            result += "This Result Has Been Saved, Please Check This Directory:\n"
+            result += full_path
 
-        # Clear input
-        self.outputTextArea.setPlainText(res)
+#refresh input
+        self.outputTB.setPlainText(result)
         self.pathFile = ""
-        self.inputBut.setText("Input File")
+        self.inputBut.setText("Input your file here!")
 
 #main prog
 app = QApplication(sys.argv)
