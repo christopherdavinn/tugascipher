@@ -187,12 +187,12 @@ QPushButton:pressed {
     </item>
     <item>
      <property name="text">
-      <string>Extended Vignere Cipher Encrypt</string>
+      <string>Extended Vigenere Cipher Encrypt</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Extended Vignere Cipher Decrypt</string>
+      <string>Extended Vigenere Cipher Decrypt</string>
      </property>
     </item>
     <item>
