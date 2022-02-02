@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #ffffff</string>
+  </property>
   <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
@@ -54,8 +57,8 @@ font: 500 18pt &quot;MS Shell Dlg 2&quot;;</string>
     <rect>
      <x>530</x>
      <y>150</y>
-     <width>411</width>
-     <height>631</height>
+     <width>410</width>
+     <height>540</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -1282,6 +1285,73 @@ font: 550 14pt &quot;MS Shell Dlg 2&quot;;</string>
      <string>Z</string>
     </property>
    </item>
+  </widget>
+  <widget class="QPushButton" name="backBut">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>720</y>
+     <width>410</width>
+     <height>65</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 700 11pt &quot;MS Shell Dlg 2&quot;;
+	border: none;
+	border-left 2px solid transparent;
+	border-radius: 15px; 
+	background-color: #fffff;
+	border: 3px solid #ffac74;
+	color: #ac6e23;
+}
+
+QPushButton:hover {
+	background-color: #ffdab5;
+}
+
+QPushButton:pressed {
+	background-color: #e69b69;
+	color: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Cipher Machine</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cryptBut">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>720</y>
+     <width>410</width>
+     <height>65</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 700 11pt &quot;MS Shell Dlg 2&quot;;
+	border: none;
+	border-left 2px solid transparent;
+	border-radius: 15px; 
+	background-color: #ffdab5;
+	color: #ac6e23;
+}
+
+QPushButton:hover {
+	background-color: #ffac74;
+}
+
+QPushButton:pressed {
+	background-color: #e69b69;
+	color: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Encrypt / Decrypt</string>
+   </property>
   </widget>
  </widget>
  <resources/>

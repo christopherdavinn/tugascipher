@@ -15,7 +15,7 @@ class enigmaScreen(QDialog):
     def __init__(self):
         #setup enigma screen
         super(enigmaScreen, self).__init__()
-        loadUi("data/src/enigma.ui", self)
+        loadUi("data/src/enigmaMachine.ui", self)
 
         self.backBut.clicked.connect(self.gotoCipher)
 

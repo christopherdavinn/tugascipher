@@ -17,13 +17,13 @@
    <string notr="true">background-color: #ffffff</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="outputTB">
+   <widget class="QPlainTextEdit" name="outputTextArea">
     <property name="geometry">
      <rect>
       <x>530</x>
       <y>150</y>
-      <width>411</width>
-      <height>541</height>
+      <width>410</width>
+      <height>540</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -87,7 +87,7 @@ font: 550 14pt &quot;MS Shell Dlg 2&quot;;</string>
 font: 500 18pt &quot;MS Shell Dlg 2&quot;;</string>
      </property>
      <property name="text">
-      <string>II4031 Kriptografi dan Koding</string>
+      <string>Cipher Machine</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
