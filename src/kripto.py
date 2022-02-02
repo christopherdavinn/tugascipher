@@ -7,7 +7,7 @@ import numpy as np
 
 import extendedVigenere
 import playfairCipher
-import vignere_cipher
+import vigenereCipher
 
 
 import uuid
@@ -53,22 +53,22 @@ class mainScreen(QMainWindow):
 
         # Encrypt
         if("encrypt" in cipherMethod.lower()):
-            if cipherMethod == "Vignere Cipher Standard Encrypt":
-                cipherText = vignere_cipher.vignere_cipher_standard_encrypt(pt, key)
+            if cipherMethod == "Vigenere Cipher Standard Encrypt":
+                cipherText = vigenereCipher.vigenere_cipher_standard_encrypt(pt, key)
 
                 res += "Cipher Text:\n\n"
                 res += cipherText
                 res += "\n"
                 res += ' '.join([cipherText[i: i+5] for i in range(0, len(cipherText), 5)])
 
-            elif cipherMethod == "Extended Vignere Cipher Encrypt":
+            elif cipherMethod == "Extended Vigenere Cipher Encrypt":
                 if(self.pathFile != ""):
                     dir_path = os.path.dirname(os.path.realpath(__file__))
                     filename = "data/res/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(dir_path, filename)
 
-                    success = extendedVigenere.extended_vignere_cipher_encrypt(
+                    success = extendedVigenere.extended_vigenere_cipher_encrypt(
                         self.pathFile, 
                         key, 
                         full_path
@@ -91,14 +91,14 @@ class mainScreen(QMainWindow):
                         res += ('{} '.format(playfairSquare[i][j]))
                     res += '\n'   
 
-            elif cipherAlgorithm == "Extended Vignere Cipher Encrypt":
+            elif cipherAlgorithm == "Extended Vigenere Cipher Encrypt":
                 if(self.pathFile != ""):
                     dir_path = os.path.dirname(os.path.realpath(__file__))
                     filename = "data/res/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(dir_path, filename)
 
-                    success = extendedVigenere.extended_vignere_cipher_encrypt(
+                    success = extendedVigenere.extended_vigenere_cipher_encrypt(
                         self.pathFile, 
                         key, 
                         full_path
@@ -113,22 +113,22 @@ class mainScreen(QMainWindow):
                     res = "Please input file!"
 
         else:
-            if cipherMethod == "Vignere Cipher Standard Decrypt":
-                plainText = vignere_cipher.vignere_cipher_standard_decrypt(pt, key)
+            if cipherMethod == "Vigenere Cipher Standard Decrypt":
+                plainText = vigenereCipher.vigenere_cipher_standard_decrypt(pt, key)
 
                 res += "Plain Text:\n\n"
                 res += plainText
                 res += "\n"
                 res += ' '.join([plainText[i: i+5] for i in range(0, len(plainText), 5)])
 
-            elif cipherMethod == "Extended Vignere Cipher Decrypt":
+            elif cipherMethod == "Extended Vigenere Cipher Decrypt":
                 if(self.pathFile != ""):
                     dir_path = os.path.dirname(os.path.realpath(__file__))
                     filename = "data/res/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(dir_path, filename)
 
-                    success = extendedVigenere.extended_vignere_cipher_decrypt(
+                    success = extendedVigenere.extended_vigenere_cipher_decrypt(
                         self.pathFile, 
                         key, 
                         full_path
@@ -150,7 +150,7 @@ class mainScreen(QMainWindow):
                         res += ('{} '.format(playfairSquare[i][j]))
                     res += '\n'
 
-        if("Extended Vignere Cipher" not in cipherMethod):
+        if("Extended Vigenere Cipher" not in cipherMethod):
             dir_path = os.path.dirname(os.path.realpath(__file__))
             filename = "data/res/" + str(uuid.uuid4()) + ".txt"
 
