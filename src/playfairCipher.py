@@ -127,35 +127,7 @@ def generatePlayfairSquare(key):
 
     return my_matrix
 
-# while(1):
-#     choice=int(input("\n 1.Encryption \n 2.Decryption: \n 3.EXIT \n"))
-#     key=input("Enter key : ")
-#     key = textCleaning(key)
-
-#     PS = generatePlayfairSquare(key)
-#     if choice==1:
-#         plainText = input("Enter Plaintext : ")
-#         plainText = textCleaning(plainText)
-#         print(encrypt(plainText, PS))
-#     elif choice==2:
-#         cipher = input('Enter cipher : ')
-#         cipher = textCleaning(cipher)
-#         print(decrypt(cipher,PS))
-#     elif choice==3:
-#         exit()
-#     else:
-#         print("Choose correct choice")
-
 def main():
-    # key = textCleaning('sony')
-    # res = ''
-    # PS = generatePlayfairSquare(key)
-    # for i in range(len(PS)):
-    #     for j in range(len(PS[0])):
-    #         res += ('{} '.format(PS[i][j]))
-    #     res += '\n'
-
-    # print(res)
     while(1):
         choice=int(input("\n 1.Encryption \n 2.Decryption: \n 3.EXIT \n"))
         key=input("Enter key : ")

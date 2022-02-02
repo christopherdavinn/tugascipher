@@ -177,42 +177,22 @@ QPushButton:pressed {
     </property>
     <item>
      <property name="text">
-      <string>Vignere Cipher Standard Encrypt</string>
+      <string>Vigenere Cipher Standard Encrypt</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Vignere Cipher Standard Decrypt</string>
+      <string>Vigenere Cipher Standard Decrypt</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Full Vignere Cipher Encrypt</string>
+      <string>Extended Vigenere Cipher Encrypt</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Full Vignere Cipher Decrypt</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Auto Key Vignere Cipher Encrypt</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Auto Key Vignere Cipher Decrypt</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Extended Vignere Cipher Encrypt</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Extended Vignere Cipher Decrypt</string>
+      <string>Extended Vigenere Cipher Decrypt</string>
      </property>
     </item>
     <item>
@@ -227,22 +207,12 @@ QPushButton:pressed {
     </item>
     <item>
      <property name="text">
-      <string>Affine Cipher Encrypt</string>
+      <string>Enigma Cipher Encrypt</string>
      </property>
     </item>
     <item>
      <property name="text">
-      <string>Affine Cipher Decrypt</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Hill Cipher Encrypt</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Hill Cipher Decrypt</string>
+      <string>Enigma Cipher Decrypt</string>
      </property>
     </item>
    </widget>
