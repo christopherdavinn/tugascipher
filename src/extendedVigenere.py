@@ -2,7 +2,7 @@ import vignere_cipher as vc
 
 BYTE_MAX = 256
 
-def extended_vignere_cipher_encrypt(src_path: str, key: str, dest_path: str) -> bool :
+def extended_vigenere_cipher_encrypt(src_path: str, key: str, dest_path: str) -> bool :
     try:
         f = open(src_path, 'rb')
 
@@ -22,7 +22,7 @@ def extended_vignere_cipher_encrypt(src_path: str, key: str, dest_path: str) -> 
     except Exception as e:
         return False
 
-def extended_vignere_cipher_decrypt(src_path: str, key: str, dest_path: str) -> str :
+def extended_vigenere_cipher_decrypt(src_path: str, key: str, dest_path: str) -> str :
     try:
         f = open(src_path, 'rb')
 

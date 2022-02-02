@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Dialog</class>
+ <widget class="QDialog" name="Dialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>850</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #ffffff</string>
+  </property>
+  <widget class="QPushButton" name="backBut">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>740</y>
+     <width>410</width>
+     <height>65</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 700 11pt &quot;MS Shell Dlg 2&quot;;
+	border: none;
+	border-left 2px solid transparent;
+	border-radius: 15px; 
+	background-color: #fffff;
+	border: 3px solid #ffac74;
+	color: #ac6e23;
+}
+
+QPushButton:hover {
+	background-color: #ffdab5;
+}
+
+QPushButton:pressed {
+	background-color: #e69b69;
+	color: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Cipher Machine</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
