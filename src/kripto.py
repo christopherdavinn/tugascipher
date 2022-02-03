@@ -17,7 +17,6 @@ class enigmaScreen(QDialog):
 
         #tombol switch to cipher machine
         self.backBut.clicked.connect(self.gotoCipher)
-
         #tombol encrypt atau decrypt enigma
         self.cryptBut.clicked.connect(self.proccessEnigma)
 
