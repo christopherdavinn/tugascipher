@@ -97,7 +97,7 @@ class mainScreen(QMainWindow):
 
             elif cipherMethod == "Playfair Cipher Encrypt":
                 # encryption
-                playfairSquare = playfairCipher.generatePlayfairSquare(key)
+                playfairSquare = playfairCipher.createPlayfairSquare(key)
                 result += playfairCipher.encrypt(pt, playfairSquare) + '\n\n'
                 for i in range(len(playfairSquare)):
                     for j in range(len(playfairSquare[0])):
@@ -136,7 +136,7 @@ class mainScreen(QMainWindow):
                     result = "Please input file!"
 
             elif cipherMethod == "Playfair Cipher Decrypt":
-                playfairSquare = playfairCipher.generatePlayfairSquare(key)
+                playfairSquare = playfairCipher.createPlayfairSquare(key)
                 result += playfairCipher.decrypt(pt, playfairSquare) + '\n\n'
                 for i in range(len(playfairSquare)):
                     for j in range(len(playfairSquare[0])):
