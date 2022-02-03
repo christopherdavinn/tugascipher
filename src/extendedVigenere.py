@@ -5,7 +5,6 @@ BYTE_MAX = 256
 def extvigenereEnc(src: str, key: str, output: str) -> bool :
     try:
         f = open(src, 'rb')
-
         fileData = bytearray(f.read())
         key = vc.getKey(fileData, vc.clean_text(key))
 
@@ -13,7 +12,6 @@ def extvigenereEnc(src: str, key: str, output: str) -> bool :
             fileData[idx] = (plainText + ord(key[idx])) % BYTE_MAX
 
         f.close()
-
         f = open(output, 'wb')
         f.write(fileData)
         f.close()
@@ -25,7 +23,6 @@ def extvigenereEnc(src: str, key: str, output: str) -> bool :
 def extvigenereDec(src: str, key: str, output: str) -> str :
     try:
         f = open(src, 'rb')
-
         fileData = bytearray(f.read())
         key = vc.getKey(fileData, vc.clean_text(key))
 
@@ -33,7 +30,6 @@ def extvigenereDec(src: str, key: str, output: str) -> str :
             fileData[idx] = (cipherText - ord(key[idx])) % BYTE_MAX
 
         f.close()
-
         f = open(output, 'wb')
         f.write(fileData)
         f.close()

@@ -15,11 +15,7 @@ def enigma(machine, initPosition, messageKey, inputText):
     machine.set_display(messageKey)
 
     text = machine.process_text(inputText, replace_char='')
-
     return text
 
 def rotorPosition(machine):
     return machine.get_display()
-
-# machine = initEnigma('II IV V', 'B U L', 'B', 'AV BS CG DL FU HZ IN KM OW RX')
-# print(enigma(machine, 'WXC', 'BLA', 'OZBBZFFBPHWCOINSDRJTKB'))

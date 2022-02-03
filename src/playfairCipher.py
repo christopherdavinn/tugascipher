@@ -1,6 +1,5 @@
 import re
 
-
 def textCleaning(text):
     text = text.upper()
     text = re.sub(r'\s*\d+\s*', '', text)
@@ -8,17 +7,13 @@ def textCleaning(text):
     text = text.replace(' ', '')
     return text
 
-
 def postProcess(text):
     text = [text[i:i+5] for i in range(0, len(text), 5)]
     text = ' '.join(text)
-
     return text
-
 
 def matriks(x, y, initial):
     return [[initial for i in range(x)] for j in range(y)]
-
 
 def locateIndex(c, matriksPlayfair):  # get location of each character
     loc = list()
@@ -31,7 +26,6 @@ def locateIndex(c, matriksPlayfair):  # get location of each character
                 loc.append(k)
                 return loc
 
-
 def encrypt(text, matriksPlayfair):
     text = textCleaning(text)
     cipher = ''
@@ -40,11 +34,8 @@ def encrypt(text, matriksPlayfair):
         if s < len(text)-1:
             if text[s] == text[s+1]:
                 text = text[:s+1]+'X'+text[s+1:]
-
     if len(text) % 2 != 0:
         text = text[:]+'X'
-
-    # print("CIPHER TEXT:", end='')
 
     while i < len(text):
         loc = list()
@@ -53,24 +44,19 @@ def encrypt(text, matriksPlayfair):
         loc1 = locateIndex(text[i+1], matriksPlayfair)
         if loc[1] == loc1[1]:
             cipher += matriksPlayfair[(loc[0]+1)%5][loc[1]] + matriksPlayfair[(loc1[0]+1)%5][loc1[1]]
-        
         elif loc[0] == loc1[0]:
             cipher += matriksPlayfair[loc[0]][(loc[1]+1) % 5] + matriksPlayfair[loc1[0]][(loc1[1]+1) % 5]
-            
         else:
             cipher += matriksPlayfair[loc[0]][loc1[1]] + matriksPlayfair[loc1[0]][loc[1]]
-
         i = i+2
 
     cipher = postProcess(cipher)
-
     return cipher
 
 
 def decrypt(cipher, matriksPlayfair):  # decryption
     cipher = textCleaning(cipher)
     plainText = ''
-    # print("PLAIN TEXT:", end=' ')
     i = 0
     while i < len(cipher):
         loc = list()
@@ -79,17 +65,13 @@ def decrypt(cipher, matriksPlayfair):  # decryption
         loc1 = locateIndex(cipher[i+1], matriksPlayfair)
         if loc[1] == loc1[1]:
             plainText += matriksPlayfair[(loc[0]-1) % 5][loc[1]] + matriksPlayfair[(loc1[0]-1) % 5][loc1[1]]
-
         elif loc[0] == loc1[0]:
             plainText += matriksPlayfair[loc[0]][(loc[1]-1) % 5] + matriksPlayfair[loc1[0]][(loc1[1]-1) % 5]
-
         else:
             plainText += matriksPlayfair[loc[0]][loc1[1]] + matriksPlayfair[loc1[0]][loc[1]]
-
         i = i+2
 
     plainText = postProcess(plainText)
-
     return plainText
 
 
@@ -103,7 +85,6 @@ def createPlayfairSquare(key):
                 result.append('I')
             else:
                 result.append(c)
-
     flag = 0
 
     for i in range(65, 91):  # storing other character
@@ -121,7 +102,6 @@ def createPlayfairSquare(key):
         for j in range(0, 5):
             thisMatrix[i][j] = result[k]
             k += 1
-
     return thisMatrix
 
 def main():

@@ -84,7 +84,7 @@ class otpScreen(QDialog):
             f.write(chars)
             print("One time pad %s written to disk " %i)
 
-        #reload combo boxes with one-time pads available
+        #reload pad
         self.padList.clear()
         i = 0
         while os.path.exists("Storage/Pad%s.txt" % i):
