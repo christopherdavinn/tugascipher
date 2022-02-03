@@ -19,7 +19,7 @@ def clean_text(pt: str) -> str:
 
     return result
 
-def generate_key_standard(plain_text: str, key: str) -> str:
+def getKey(plain_text: str, key: str) -> str:
     if(len(key) >= len(plain_text)):
         return key[:len(key)]
 
@@ -56,13 +56,13 @@ def vigenereDec(cipher_text: str, key: str) -> str:
 def vigenerestdEnc(plain_text: str, key: str):
     plain_text = clean_text(plain_text)
     key = clean_text(key)
-    full_key = generate_key_standard(plain_text, key)
+    full_key = getKey(plain_text, key)
 
     return vigenereEnc(plain_text, full_key)
 
 def vigenerestdDec(cipher_text: str, key: str):
     cipher_text = clean_text(cipher_text)
     key = clean_text(key)
-    full_key = generate_key_standard(cipher_text, key)
+    full_key = getKey(cipher_text, key)
 
     return vigenereDec(cipher_text, full_key)

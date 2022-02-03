@@ -7,10 +7,10 @@ def extvigenereEnc(src: str, key: str, output: str) -> bool :
         f = open(src, 'rb')
 
         fileData = bytearray(f.read())
-        newKey = vc.generate_key_standard(fileData, vc.clean_text(key))
+        key = vc.getKey(fileData, vc.clean_text(key))
 
         for idx, plainText in enumerate(fileData):
-            fileData[idx] = (plainText + ord(newKey[idx])) % BYTE_MAX
+            fileData[idx] = (plainText + ord(key[idx])) % BYTE_MAX
 
         f.close()
 
@@ -27,10 +27,10 @@ def extvigenereDec(src: str, key: str, output: str) -> str :
         f = open(src, 'rb')
 
         fileData = bytearray(f.read())
-        newKey = vc.generate_key_standard(fileData, vc.clean_text(key))
+        key = vc.getKey(fileData, vc.clean_text(key))
 
         for idx, cipherText in enumerate(fileData):
-            fileData[idx] = (cipherText - ord(newKey[idx])) % BYTE_MAX
+            fileData[idx] = (cipherText - ord(key[idx])) % BYTE_MAX
 
         f.close()
 

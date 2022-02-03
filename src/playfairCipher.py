@@ -78,7 +78,7 @@ def decrypt(cipher, matriksPlayfair):  # decryption
         loc1 = list()
         loc1 = locateIndex(cipher[i+1], matriksPlayfair)
         if loc[1] == loc1[1]:
-            plainText += matriksPlayfair[(loc[0]-1) % 5][loc[1]] + \matriksPlayfair[(loc1[0]-1) % 5][loc1[1]]
+            plainText += matriksPlayfair[(loc[0]-1) % 5][loc[1]] + matriksPlayfair[(loc1[0]-1) % 5][loc1[1]]
 
         elif loc[0] == loc1[0]:
             plainText += matriksPlayfair[loc[0]][(loc[1]-1) % 5] + matriksPlayfair[loc1[0]][(loc1[1]-1) % 5]
