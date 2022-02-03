@@ -11,10 +11,10 @@ def clean_text(pt: str) -> str:
     result = result.replace(" ", "")
     result = result.lower()
 
-    # Remove number
+    #remove angka
     result = ''.join([i for i in result if not i.isdigit()])
 
-    # Remove punctuation
+    #remove tanda
     result = re.sub(r'[^\w\s]', '', result)
 
     return result
@@ -38,7 +38,6 @@ def vigenereEnc(plain_text: str, key: str) -> str:
         curr_cipher_text_num = (curr_plain_text_num + curr_key_text_num) % 26
 
         cipher_text += alf[curr_cipher_text_num]
-
     return cipher_text
 
 def vigenereDec(cipher_text: str, key: str) -> str:
@@ -57,12 +56,10 @@ def vigenerestdEnc(plain_text: str, key: str):
     plain_text = clean_text(plain_text)
     key = clean_text(key)
     full_key = getKey(plain_text, key)
-
     return vigenereEnc(plain_text, full_key)
 
 def vigenerestdDec(cipher_text: str, key: str):
     cipher_text = clean_text(cipher_text)
     key = clean_text(key)
     full_key = getKey(cipher_text, key)
-
     return vigenereDec(cipher_text, full_key)
