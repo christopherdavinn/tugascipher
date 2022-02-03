@@ -15,12 +15,34 @@ class enigmaScreen(QDialog):
         super(enigmaScreen, self).__init__()
         loadUi("data/ui/enigmaMachine.ui", self)
 
+        #tombol switch to cipher machine
         self.backBut.clicked.connect(self.gotoCipher)
+
+        #tombol encrypt atau decrypt enigma
+        self.cryptBut.clicked.connect(self.proccessEnigma)
 
     def gotoCipher(self):
         cipherMachine = mainScreen()
         widget.addWidget(cipherMachine)
         widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def proccessEnigma(self):
+        inputText = self.textInput.toPlainText()
+        rotorSet = self.rotorSetting.toPlainText()
+        ringSet = self.ringSetting.toPlainText()
+        reflectorSet = self.reflectorSetting.toPlainText()
+        plugboardSet = self.plugboardSetting.toPlainText()
+        startPos = self.startPosition.toPlainText()
+        messageKey = self.messageKey.toPlainText()
+		
+        result = ""
+		
+        inition = enigmaCipher.initEnigma(rotorSet, ringSet, reflectorSet, plugboardSet)
+        outputText = enigmaCipher.enigma(inition, startPos, messageKey, inputText) 
+		
+        result += ' '.join([outputText[i: i+5] for i in range(0, len(outputText), 5)])
+		
+        self.outputTextArea.setPlainText(result)	
 
 #initial cipher GUI(main screen)
 class mainScreen(QMainWindow):
