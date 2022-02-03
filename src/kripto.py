@@ -8,6 +8,27 @@ import extendedVigenere
 import playfairCipher
 import vigenere
 
+class otpScreen(QDialog):
+    def __init__(self):
+        #setup cipher screen (main screen)
+        super(otpScreen, self).__init__()
+        loadUi("ui/otpgui.ui", self)
+
+        #tombol switch to cipher machine
+        self.backBut.clicked.connect(self.gotoCipher)
+        #tombol switch to enigma machine
+        self.enigmaBut.clicked.connect(self.gotoEnigma) 
+
+    def gotoCipher(self):
+        cipherMachine = mainScreen()
+        widget.addWidget(cipherMachine)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def gotoEnigma(self):
+        enigmaMachine = enigmaScreen()
+        widget.addWidget(enigmaMachine)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
 #initial load enigma GUI
 class enigmaScreen(QDialog):
     def __init__(self):
@@ -17,8 +38,11 @@ class enigmaScreen(QDialog):
 
         #tombol switch to cipher machine
         self.backBut.clicked.connect(self.gotoCipher)
+        #tombol switch to OTP machine
+        self.otpBut.clicked.connect(self.gotoOTP)
         #tombol encrypt atau decrypt enigma
         self.cryptBut.clicked.connect(self.proccessEnigma)
+
 
     def gotoCipher(self):
         cipherMachine = mainScreen()
@@ -43,6 +67,11 @@ class enigmaScreen(QDialog):
 		
         self.outputTextArea.setPlainText(result)	
 
+    def gotoOTP(self):
+        otpMachine = otpScreen()
+        widget.addWidget(otpMachine)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
 #initial cipher GUI(main screen)
 class mainScreen(QMainWindow):
     def __init__(self):
@@ -56,12 +85,19 @@ class mainScreen(QMainWindow):
         self.cryptBut.clicked.connect(self.processFile)
         #tombol switch to enigma machine
         self.enigmaBut.clicked.connect(self.gotoEnigma) 
+        #tombol switch to OTP machine
+        self.otpBut.clicked.connect(self.gotoOTP)
 
         self.path = ""
 
     def gotoEnigma(self):
         enigmaMachine = enigmaScreen()
         widget.addWidget(enigmaMachine)
+        widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def gotoOTP(self):
+        otpMachine = otpScreen()
+        widget.addWidget(otpMachine)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
     def inputFile(self):
@@ -106,7 +142,6 @@ class mainScreen(QMainWindow):
                         key, 
                         filePath
                     )
-
                     if(success):
                         result += "Encrypt success!\n\n"
                         result += "Filename: %s" %(fileName)
@@ -145,7 +180,6 @@ class mainScreen(QMainWindow):
                         key, 
                         filePath
                     )
-
                     if(success):
                         result += "Decrypt success!\n\n"
                         result += "Filename: %s" %(fileName)
