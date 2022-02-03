@@ -7,6 +7,7 @@ import os
 import extendedVigenere
 import playfairCipher
 import vigenere
+import enigmaCipher
 
 class otpScreen(QDialog):
     def __init__(self):
