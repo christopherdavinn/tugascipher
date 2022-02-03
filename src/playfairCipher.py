@@ -16,15 +16,15 @@ def postProcess(text):
     return text
 
 
-def matrix(x, y, initial):
+def matriks(x, y, initial):
     return [[initial for i in range(x)] for j in range(y)]
 
 
-def locateIndex(c, playFairMatrix):  # get location of each character
+def locateIndex(c, matriksPlayfair):  # get location of each character
     loc = list()
     if c == 'J':
         c = 'I'
-    for i, j in enumerate(playFairMatrix):
+    for i, j in enumerate(matriksPlayfair):
         for k, l in enumerate(j):
             if c == l:
                 loc.append(i)
@@ -32,7 +32,7 @@ def locateIndex(c, playFairMatrix):  # get location of each character
                 return loc
 
 
-def encrypt(text, playFairMatrix):
+def encrypt(text, matriksPlayfair):
     text = textCleaning(text)
     cipher = ''
     i = 0
@@ -48,18 +48,18 @@ def encrypt(text, playFairMatrix):
 
     while i < len(text):
         loc = list()
-        loc = locateIndex(text[i], playFairMatrix)
+        loc = locateIndex(text[i], matriksPlayfair)
         loc1 = list()
-        loc1 = locateIndex(text[i+1], playFairMatrix)
+        loc1 = locateIndex(text[i+1], matriksPlayfair)
         if loc[1] == loc1[1]:
-            cipher += playFairMatrix[(loc[0]+1)%5][loc[1]] + playFairMatrix[(loc1[0]+1)%5][loc1[1]]
-            # print("{}{}".format(playFairMatrix[(loc[0]+1)%5][loc[1]],playFairMatrix[(loc1[0]+1)%5][loc1[1]]),end=' ')
+            cipher += matriksPlayfair[(loc[0]+1)%5][loc[1]] + matriksPlayfair[(loc1[0]+1)%5][loc1[1]]
+        
         elif loc[0] == loc1[0]:
-            cipher += playFairMatrix[loc[0]][(loc[1]+1) % 5] + playFairMatrix[loc1[0]][(loc1[1]+1) % 5]
-            # print("{}{}".format(playFairMatrix[loc[0]][(loc[1]+1)%5],playFairMatrix[loc1[0]][(loc1[1]+1)%5]),end=' ')
+            cipher += matriksPlayfair[loc[0]][(loc[1]+1) % 5] + matriksPlayfair[loc1[0]][(loc1[1]+1) % 5]
+            
         else:
-            cipher += playFairMatrix[loc[0]][loc1[1]] + playFairMatrix[loc1[0]][loc[1]]
-            # print("{}{}".format(playFairMatrix[loc[0]][loc1[1]],playFairMatrix[loc1[0]][loc[1]]),end=' ')
+            cipher += matriksPlayfair[loc[0]][loc1[1]] + matriksPlayfair[loc1[0]][loc[1]]
+
         i = i+2
 
     cipher = postProcess(cipher)
@@ -67,28 +67,25 @@ def encrypt(text, playFairMatrix):
     return cipher
 
 
-def decrypt(cipher, playFairMatrix):  # decryption
+def decrypt(cipher, matriksPlayfair):  # decryption
     cipher = textCleaning(cipher)
     plainText = ''
     # print("PLAIN TEXT:", end=' ')
     i = 0
     while i < len(cipher):
         loc = list()
-        loc = locateIndex(cipher[i], playFairMatrix)
+        loc = locateIndex(cipher[i], matriksPlayfair)
         loc1 = list()
-        loc1 = locateIndex(cipher[i+1], playFairMatrix)
+        loc1 = locateIndex(cipher[i+1], matriksPlayfair)
         if loc[1] == loc1[1]:
-            plainText += playFairMatrix[(loc[0]-1) % 5][loc[1]] + \
-                playFairMatrix[(loc1[0]-1) % 5][loc1[1]]
-            # print("{}{}".format(playFairMatrix[(loc[0]-1)%5][loc[1]],playFairMatrix[(loc1[0]-1)%5][loc1[1]]),end=' ')
+            plainText += matriksPlayfair[(loc[0]-1) % 5][loc[1]] + \matriksPlayfair[(loc1[0]-1) % 5][loc1[1]]
+
         elif loc[0] == loc1[0]:
-            plainText += playFairMatrix[loc[0]][(loc[1]-1) %
-                                                5] + playFairMatrix[loc1[0]][(loc1[1]-1) % 5]
-            # print("{}{}".format(playFairMatrix[loc[0]][(loc[1]-1)%5],playFairMatrix[loc1[0]][(loc1[1]-1)%5]),end=' ')
+            plainText += matriksPlayfair[loc[0]][(loc[1]-1) % 5] + matriksPlayfair[loc1[0]][(loc1[1]-1) % 5]
+
         else:
-            plainText += playFairMatrix[loc[0]][loc1[1]
-                                                ] + playFairMatrix[loc1[0]][loc[1]]
-            # print("{}{}".format(playFairMatrix[loc[0]][loc1[1]],playFairMatrix[loc1[0]][loc[1]]),end=' ')
+            plainText += matriksPlayfair[loc[0]][loc1[1]] + matriksPlayfair[loc1[0]][loc[1]]
+
         i = i+2
 
     plainText = postProcess(plainText)
@@ -96,7 +93,7 @@ def decrypt(cipher, playFairMatrix):  # decryption
     return plainText
 
 
-def generatePlayfairSquare(key):
+def createPlayfairSquare(key):
     key = key.upper()
     result = list()
 
@@ -119,49 +116,21 @@ def generatePlayfairSquare(key):
             else:
                 result.append(chr(i))
     k = 0
-    my_matrix = matrix(5, 5, 0)  # initialize matrix
+    thisMatrix = matriks(5, 5, 0)  # initialize matrix
     for i in range(0, 5):  # making matrix
         for j in range(0, 5):
-            my_matrix[i][j] = result[k]
+            thisMatrix[i][j] = result[k]
             k += 1
 
-    return my_matrix
-
-# while(1):
-#     choice=int(input("\n 1.Encryption \n 2.Decryption: \n 3.EXIT \n"))
-#     key=input("Enter key : ")
-#     key = textCleaning(key)
-
-#     PS = generatePlayfairSquare(key)
-#     if choice==1:
-#         plainText = input("Enter Plaintext : ")
-#         plainText = textCleaning(plainText)
-#         print(encrypt(plainText, PS))
-#     elif choice==2:
-#         cipher = input('Enter cipher : ')
-#         cipher = textCleaning(cipher)
-#         print(decrypt(cipher,PS))
-#     elif choice==3:
-#         exit()
-#     else:
-#         print("Choose correct choice")
+    return thisMatrix
 
 def main():
-    # key = textCleaning('sony')
-    # res = ''
-    # PS = generatePlayfairSquare(key)
-    # for i in range(len(PS)):
-    #     for j in range(len(PS[0])):
-    #         res += ('{} '.format(PS[i][j]))
-    #     res += '\n'
-
-    # print(res)
     while(1):
         choice=int(input("\n 1.Encryption \n 2.Decryption: \n 3.EXIT \n"))
         key=input("Enter key : ")
         key = textCleaning(key)
 
-        PS = generatePlayfairSquare(key)
+        PS = createPlayfairSquare(key)
         if choice==1:
             plainText = input("Enter Plaintext : ")
             plainText = textCleaning(plainText)
