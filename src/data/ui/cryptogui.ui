@@ -32,7 +32,7 @@
 	border-radius: 10px; 
 	color: #ac6e23;
 	background-color: #fff7ea;
-	padding-left: 5px;
+	padding: 10px;
 	font: 14pt &quot;MS Shell Dlg 2&quot;;
 }
 </string>
@@ -315,7 +315,7 @@ QPlainTextEdit:hover {
 	border: none;
 	border-left 2px solid transparent;
 	border-radius: 15px; 
-	background-color: #fffff;
+	background-color: #ffffff;
 	border: 3px solid #ffac74;
 	color: #ac6e23;
 }

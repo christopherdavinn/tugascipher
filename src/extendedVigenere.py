@@ -2,9 +2,9 @@ import vigenere as vc
 
 BYTE_MAX = 256
 
-def extended_vigenere_cipher_encrypt(src_path: str, key: str, dest_path: str) -> bool :
+def extvigenereEnc(src: str, key: str, output: str) -> bool :
     try:
-        f = open(src_path, 'rb')
+        f = open(src, 'rb')
 
         fileData = bytearray(f.read())
         newKey = vc.generate_key_standard(fileData, vc.clean_text(key))
@@ -14,7 +14,7 @@ def extended_vigenere_cipher_encrypt(src_path: str, key: str, dest_path: str) ->
 
         f.close()
 
-        f = open(dest_path, 'wb')
+        f = open(output, 'wb')
         f.write(fileData)
         f.close()
 
@@ -22,9 +22,9 @@ def extended_vigenere_cipher_encrypt(src_path: str, key: str, dest_path: str) ->
     except Exception as e:
         return False
 
-def extended_vigenere_cipher_decrypt(src_path: str, key: str, dest_path: str) -> str :
+def extvigenereDec(src: str, key: str, output: str) -> str :
     try:
-        f = open(src_path, 'rb')
+        f = open(src, 'rb')
 
         fileData = bytearray(f.read())
         newKey = vc.generate_key_standard(fileData, vc.clean_text(key))
@@ -34,7 +34,7 @@ def extended_vigenere_cipher_decrypt(src_path: str, key: str, dest_path: str) ->
 
         f.close()
 
-        f = open(dest_path, 'wb')
+        f = open(output, 'wb')
         f.write(fileData)
         f.close()
 
