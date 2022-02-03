@@ -123,7 +123,7 @@ class mainScreen(QMainWindow):
 
 #encrypt code
         if("encrypt" in cipherMethod.lower()):
-            if cipherMethod == "Vigenere Cipher Standard Encrypt":
+            if cipherMethod == "Vigenere Cipher Encrypt":
                 ct = vigenere.vigenerestdEnc(pt, key)
 
                 result += "Cipher Text:\n"
@@ -161,7 +161,7 @@ class mainScreen(QMainWindow):
 
 #decrypt code
         else:
-            if cipherMethod == "Vigenere Cipher Standard Decrypt":
+            if cipherMethod == "Vigenere Cipher Decrypt":
                 pt = vigenere.vigenerestdDec(pt, key)
 
                 result += "Plain Text:\n"
