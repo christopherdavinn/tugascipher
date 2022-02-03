@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: #ffffff</string>
+  </property>
   <widget class="QTextEdit" name="inputText">
    <property name="geometry">
     <rect>
@@ -30,7 +33,7 @@
    </property>
    <property name="styleSheet">
     <string notr="true">QTextEdit{
-	font: 10pt &quot;MS Shell Dlg 2&quot;;
+	font: 14pt &quot;MS Shell Dlg 2&quot;;
 	border: 1px solid #ffcca0;
 	border-radius: 10px; 
 	color: #ac6e23;
@@ -160,6 +163,10 @@ font: 550 10pt &quot;MS Shell Dlg 2&quot;;</string>
      <height>31</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: &quot;MS Shell Dlg 2&quot;;
+padding-left: 10px;</string>
+   </property>
   </widget>
   <widget class="QPushButton" name="enigmaBut">
    <property name="geometry">
@@ -229,22 +236,37 @@ QPushButton:pressed {
     <string>Cipher Machine</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="padBut">
+  <widget class="QWidget" name="widget" native="true">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>30</y>
-     <width>300</width>
-     <height>51</height>
+     <x>0</x>
+     <y>0</y>
+     <width>1000</width>
+     <height>80</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">QPushButton {
+    <string notr="true">QWidget{
+	background-color: #ffdab5;
+}
+</string>
+   </property>
+   <widget class="QPushButton" name="padBut">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>15</y>
+      <width>300</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
 	font: 700 10pt &quot;MS Shell Dlg 2&quot;;
 	border: none;
 	border-left 2px solid transparent;
 	border-radius: 15px; 
-	background-color: #ffdab5;
+	background-color: #ffffff;
 	color: #ac6e23;
 }
 
@@ -257,10 +279,11 @@ QPushButton:pressed {
 	color: #fff;
 }
 </string>
-   </property>
-   <property name="text">
-    <string>Make Pad</string>
-   </property>
+    </property>
+    <property name="text">
+     <string>Make Pad</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>
