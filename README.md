@@ -1,44 +1,23 @@
-# Classic Cryptography
-## General info
-Program ini dibuat untuk memenuhi tugas Mata Kuliah **IF 4020 Kriptografi** <br />
+# II4031 Kriptografi dan Koding
+Tugas 1 II4031 Kriptografi dan Koding - Cipher
 
-Program Studi Teknik Informatika <br />
-Sekolah Teknik Elektro dan Informatika <br />
-Institut Teknologi Bandung <br />
+## Dibuat oleh
+* Faisal Helmi Wicaksono (18219025)
+* Christopher Davin Leoputra (18219037)
 
-Semester I Tahun 2021/2022
+## Penjelasan Singkat
+Program ini berisi pengimplementasian: <br />
+a. Vigenere Cipher standard <br />
+b. Extended Vigenere Cipher <br />
+c. Playfair Cipher <br />
+d. Enigma Cipher <br />
+e. One-time pad <br />
 
-## Algorithm
-* Standard Vigenere Cipher
-* Full Vigenere Cipher
-* Auto-key Vigenere Cipher
-* Extended Vigenere Cipher
-* Playfair Cipher
-* Hill Cipher
+## Cara menjalankan aplikasi
+* Pindah ke direktori `src/` di dalam folder
+* Program dijalankan dengan melakukan run pada file `kripto.py` dengan menjalankan perintah berikut `python kripto.py`
 
-## Screenshots
-![Example screenshot](./src/data/img/affine-encrypt.png)
-![Example screenshot](./src/data/img/affine-decrypt.png)
-![Example screenshot](./src/data/img/playfair-encrypt.png)
-![Example screenshot](./src/data/img/playfair-decrypt.png)
-
-## Technologies
-* Python - version 3.8.3
-* PyQt - version 5
-* Numpy - version 1.16.2
-
-## Setup
-```
-  $pip3 install PyQt5
-  $pip3 install numpy
-```
-## Executing The Program
-```
-  $python3 src/classic-crypto.py
-```
-## Features
-* Encrypt-Decrypt text with various classic cryptography algorithm
-* Encrypt-Decrypt any file using Extended Vigenere Cipher
-## Author
-* Daru Bagus Dananjaya (13519080)
-* Karel Renaldi (13519180)
+## Keterangan
+* Data hasil enkripsi & dekripsi akan muncul pada direktori `src/output`
+* Direktori `src/src` berisi file dummy yang dapat digunakan untuk melakukan kriptografi
+* Direktori `src/ui` berisi tampilan antarmuka (GUI) program

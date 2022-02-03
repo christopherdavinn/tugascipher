@@ -4,11 +4,15 @@ from PyQt5.uic import loadUi
 import sys
 import uuid
 import os
+
 import extendedVigenere
 import playfairCipher
 import vigenere
 import enigmaCipher
+
+import numpy as np
 import onetimepad
+import pyperclip
 
 class otpScreen(QDialog):
     def __init__(self):
@@ -21,20 +25,19 @@ class otpScreen(QDialog):
         #tombol switch to enigma machine
         self.enigmaBut.clicked.connect(self.gotoEnigma) 
 
-
-        self.encBut.clicked.connect(onetimepad.otpEnc)
-        self.decBut.clicked.connect(onetimepad.otpDec)
-        self.padBut.clicked.connect(onetimepad.newPad)
-        self.inputText.setText('Type your message to be encypted here - limit is 400 characters')  
+        #tombol encrypt OTP
+        self.encBut.clicked.connect(self.otpEnc)
+        #tombol decrypt OTP
+        self.decBut.clicked.connect(self.otpDec)
+        #tombol make pad OTP     
+        self.padBut.clicked.connect(self.newPad)
         
-        #load combo boxes with one-time pads available
         self.padList.clear()
 
         i = 0
         while os.path.exists("storage/Pad%s.txt" % i):
             self.padList.addItem(f"{round(int(i),0)}")
             i += 1
-        
 
     def gotoCipher(self):
         cipherMachine = mainScreen()
@@ -45,6 +48,49 @@ class otpScreen(QDialog):
         enigmaMachine = enigmaScreen()
         widget.addWidget(enigmaMachine)
         widget.setCurrentIndex(widget.currentIndex()+1)
+
+    def otpEnc(self):
+        PadSel = self.padList.currentText()    
+        with open("Storage/Pad%s.txt" % PadSel, 'r') as f:
+            keypad = f.read()
+        cipher = onetimepad.encrypt(self.inputText.toPlainText(), keypad)
+        print("Cipher text: ", cipher)     
+        
+        self.outputText.setText(cipher)  
+        self.outputText.repaint()  
+        pyperclip.copy(cipher)    
+
+    def otpDec(self):      
+        PadSel = self.padList.currentText()   
+        with open("Storage/Pad%s.txt" % PadSel, 'r') as f:
+            keypad = f.read()           
+        pt = onetimepad.decrypt(self.inputText.toPlainText(), keypad)
+        print("Plain text: ", pt)
+        
+        self.outputText.setText(pt)  
+        self.outputText.repaint()  
+        pyperclip.copy(pt) 
+
+    def newPad(self):
+        self.padBut.setEnabled(False)
+        n = 1024 ** 2  # 1 Mb of random text
+        letters = np.array(list(chr(ord('a') + i) for i in range(26)))    
+        chars = ''.join(np.random.choice(letters, n))
+        i = 0
+        while os.path.exists("Storage/Pad%s.txt" % i):
+            i += 1
+
+        with open("Storage/Pad%s.txt" % i, 'w+') as f:
+            f.write(chars)
+            print("One time pad %s written to disk " %i)
+
+        #reload combo boxes with one-time pads available
+        self.padList.clear()
+        i = 0
+        while os.path.exists("Storage/Pad%s.txt" % i):
+            self.padList.addItem(f"{round(int(i),0)}")
+            i += 1
+        self.padBut.setEnabled(True)
 
 #initial load enigma GUI
 class enigmaScreen(QDialog):
@@ -59,7 +105,6 @@ class enigmaScreen(QDialog):
         self.otpBut.clicked.connect(self.gotoOTP)
         #tombol encrypt atau decrypt enigma
         self.cryptBut.clicked.connect(self.proccessEnigma)
-
 
     def gotoCipher(self):
         cipherMachine = mainScreen()
