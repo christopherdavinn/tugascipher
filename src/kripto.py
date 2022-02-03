@@ -2,15 +2,13 @@ from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
 from PyQt5.uic import loadUi
 import sys
-
-import extendedVigenere
-import playfairCipher
-import vignere_cipher
-
 import uuid
 import os
+import extendedVigenere
+import playfairCipher
+import vigenere
 
-#initial load crypto GUI
+#initial load enigma GUI
 class enigmaScreen(QDialog):
     def __init__(self):
         #setup enigma screen
@@ -24,6 +22,7 @@ class enigmaScreen(QDialog):
         widget.addWidget(cipherMachine)
         widget.setCurrentIndex(widget.currentIndex()+1)
 
+#initial cipher GUI(main screen)
 class mainScreen(QMainWindow):
     def __init__(self):
         #setup cipher screen (main screen)
@@ -71,7 +70,7 @@ class mainScreen(QMainWindow):
 #encrypt code
         if("encrypt" in cipherMethod.lower()):
             if cipherMethod == "Vigenere Cipher Standard Encrypt":
-                cipherText = vignere_cipher.vigenere_cipher_standard_encrypt(pt, key)
+                cipherText = vigenere.vigenerestdEnc(pt, key)
 
                 result += "Cipher Text:\n\n"
                 result += cipherText
@@ -111,12 +110,12 @@ class mainScreen(QMainWindow):
 #decrypt code
         else:
             if cipherMethod == "Vigenere Cipher Standard Decrypt":
-                plainText = vignere_cipher.vigenere_cipher_standard_decrypt(pt, key)
+                cipher = vigenere.vigenerestdDec(pt, key)
 
                 result += "Plain Text:\n\n"
-                result += plainText
+                result += cipher
                 result += "\n"
-                result += ' '.join([plainText[i: i+5] for i in range(0, len(plainText), 5)])
+                result += ' '.join([cipher[i: i+5] for i in range(0, len(cipher), 5)])
 
             elif cipherMethod == "Extended Vigenere Cipher Decrypt":
                 if(self.pathFile != ""):

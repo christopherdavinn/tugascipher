@@ -1,4 +1,4 @@
-import vignere_cipher as vc
+import vigenere as vc
 
 BYTE_MAX = 256
 

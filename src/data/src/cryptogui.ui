@@ -17,7 +17,7 @@
    <string notr="true">background-color: #ffffff</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPlainTextEdit" name="outputTextArea">
+   <widget class="QPlainTextEdit" name="outputTB">
     <property name="geometry">
      <rect>
       <x>530</x>

@@ -1,25 +1,23 @@
 import re
 
-alphabet = [chr(97 + i) for i in range(26)]
+#vignere cipher std: 26 alfabet
+alf = [chr(97 + i) for i in range(26)]
 
-def clean_text(text: str) -> str:
-    res = text
+def clean_text(pt: str) -> str:
+    result = pt
 
-    # Convert to lowercase
-    res = res.lower()
-
-    # Remove whitespace
-    res.strip()
-
-    res = res.replace(" ", "")
+    #merge text
+    result.strip()
+    result = result.replace(" ", "")
+    result = result.lower()
 
     # Remove number
-    res = ''.join([i for i in res if not i.isdigit()])
+    result = ''.join([i for i in result if not i.isdigit()])
 
     # Remove punctuation
-    res = re.sub(r'[^\w\s]', '', res)
+    result = re.sub(r'[^\w\s]', '', result)
 
-    return res
+    return result
 
 def generate_key_standard(plain_text: str, key: str) -> str:
     if(len(key) >= len(plain_text)):
@@ -31,7 +29,7 @@ def generate_key_standard(plain_text: str, key: str) -> str:
 
     return full_key
 
-def vigenere_cipher_encrypt(plain_text: str, key: str) -> str:
+def vigenereEnc(plain_text: str, key: str) -> str:
     cipher_text = ""
 
     for i in range(len(plain_text)):
@@ -39,11 +37,11 @@ def vigenere_cipher_encrypt(plain_text: str, key: str) -> str:
         curr_key_text_num = ord(key[i]) - ord('a')
         curr_cipher_text_num = (curr_plain_text_num + curr_key_text_num) % 26
 
-        cipher_text += alphabet[curr_cipher_text_num]
+        cipher_text += alf[curr_cipher_text_num]
 
     return cipher_text
 
-def vigenere_cipher_decrypt(cipher_text: str, key: str) -> str:
+def vigenereDec(cipher_text: str, key: str) -> str:
     plain_text = ""
 
     for i in range(len(cipher_text)):
@@ -51,20 +49,20 @@ def vigenere_cipher_decrypt(cipher_text: str, key: str) -> str:
         curr_key_text_num = ord(key[i]) - ord('a')
         curr_plain_text_num = (curr_cipher_text_num - curr_key_text_num) % 26
 
-        plain_text += alphabet[curr_plain_text_num]
+        plain_text += alf[curr_plain_text_num]
 
     return plain_text
 
-def vigenere_cipher_standard_encrypt(plain_text: str, key: str):
+def vigenerestdEnc(plain_text: str, key: str):
     plain_text = clean_text(plain_text)
     key = clean_text(key)
     full_key = generate_key_standard(plain_text, key)
 
-    return vigenere_cipher_encrypt(plain_text, full_key)
+    return vigenereEnc(plain_text, full_key)
 
-def vigenere_cipher_standard_decrypt(cipher_text: str, key: str):
+def vigenerestdDec(cipher_text: str, key: str):
     cipher_text = clean_text(cipher_text)
     key = clean_text(key)
     full_key = generate_key_standard(cipher_text, key)
 
-    return vigenere_cipher_decrypt(cipher_text, full_key)
+    return vigenereDec(cipher_text, full_key)
