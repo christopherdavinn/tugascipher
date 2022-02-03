@@ -17,9 +17,9 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>40</y>
+     <y>100</y>
      <width>800</width>
-     <height>290</height>
+     <height>270</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -48,9 +48,9 @@ QTextEdit:hover {
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>420</y>
+     <y>460</y>
      <width>800</width>
-     <height>290</height>
+     <height>270</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -72,7 +72,7 @@ QTextEdit:hover {
    <property name="geometry">
     <rect>
      <x>540</x>
-     <y>350</y>
+     <y>390</y>
      <width>165</width>
      <height>51</height>
     </rect>
@@ -105,7 +105,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>730</x>
-     <y>350</y>
+     <y>390</y>
      <width>165</width>
      <height>51</height>
     </rect>
@@ -138,7 +138,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>360</y>
+     <y>400</y>
      <width>241</width>
      <height>28</height>
     </rect>
@@ -155,7 +155,7 @@ font: 550 10pt &quot;MS Shell Dlg 2&quot;;</string>
    <property name="geometry">
     <rect>
      <x>360</x>
-     <y>360</y>
+     <y>400</y>
      <width>140</width>
      <height>31</height>
     </rect>
@@ -165,7 +165,7 @@ font: 550 10pt &quot;MS Shell Dlg 2&quot;;</string>
    <property name="geometry">
     <rect>
      <x>520</x>
-     <y>740</y>
+     <y>760</y>
      <width>350</width>
      <height>65</height>
     </rect>
@@ -199,7 +199,7 @@ QPushButton:pressed {
    <property name="geometry">
     <rect>
      <x>130</x>
-     <y>740</y>
+     <y>760</y>
      <width>350</width>
      <height>65</height>
     </rect>
@@ -227,6 +227,39 @@ QPushButton:pressed {
    </property>
    <property name="text">
     <string>Cipher Machine</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="padBut">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>30</y>
+     <width>300</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton {
+	font: 700 10pt &quot;MS Shell Dlg 2&quot;;
+	border: none;
+	border-left 2px solid transparent;
+	border-radius: 15px; 
+	background-color: #ffdab5;
+	color: #ac6e23;
+}
+
+QPushButton:hover {
+	background-color: #ffac74;
+}
+
+QPushButton:pressed {
+	background-color: #e69b69;
+	color: #fff;
+}
+</string>
+   </property>
+   <property name="text">
+    <string>Make Pad</string>
    </property>
   </widget>
  </widget>

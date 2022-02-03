@@ -19,13 +19,13 @@ class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         QtWidgets.QMainWindow.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
-        self.tabWidget.setCurrentIndex(1)
-        self.quitButton.clicked.connect(self.on_Quitclick)
-        self.encryptButton.clicked.connect(self.on_encyptclick)
-        self.decryptButton.clicked.connect(self.on_decyptclick)
-        self.makeButton.clicked.connect(self.make_pad)
-        self.textEditIN.textChanged.connect(self.updatecounter)
-        self.textEditIN.setText('Type your message to be encypted here - limit is 400 characters')  
+
+
+        self.encBut.clicked.connect(self.otpEnc)
+        self.decBut.clicked.connect(self.otpDec)
+        self.padBut.clicked.connect(self.newPad)
+        self.inputText.textChanged.connect(self.updatecounter)
+        self.inputText.setText('Type your message to be encypted here - limit is 400 characters')  
         
         #load combo boxes with one-time pads available
         self.padCombo_1.clear()
@@ -36,7 +36,7 @@ class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
             self.padCombo_2.addItem(f"{round(int(i),0)}")
             i += 1
         
-    def on_decyptclick(self):
+    def otpDec(self):
         print('Button decrypt clicked')        
         PadSel = self.padCombo_2.currentText()   
         with open("Storage/Pad%s.txt" % PadSel, 'r') as f:
@@ -47,7 +47,7 @@ class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.textEditOUT_2.repaint()  
         pyperclip.copy(msg) 
 
-    def on_encyptclick(self):
+    def otpEnc(self):
         print('Button encrypt clicked')
         PadSel = self.padCombo_1.currentText()    
         with open("Storage/Pad%s.txt" % PadSel, 'r') as f:
@@ -58,7 +58,7 @@ class MyWindow(QtWidgets.QMainWindow, Ui_MainWindow):
         self.textEditOUT.repaint()  
         pyperclip.copy(cipher)         
  
-    def make_pad(self):
+    def newPad(self):
         self.makeButton.setEnabled(False)
         n = 1024 ** 2  # 1 Mb of random text
         letters = np.array(list(chr(ord('a') + i) for i in range(26)))    
