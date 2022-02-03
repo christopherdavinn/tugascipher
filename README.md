@@ -1,5 +1,5 @@
 # II4031 Kriptografi dan Koding
-Tugas 1 II4031 Kriptografi dan Koding - Cipher
+Tugas 1 II4031 Kriptografi dan Koding - "Cipher"
 
 ## Dibuat oleh
 * Faisal Helmi Wicaksono (18219025)
