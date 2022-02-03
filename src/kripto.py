@@ -13,7 +13,7 @@ class enigmaScreen(QDialog):
     def __init__(self):
         #setup enigma screen
         super(enigmaScreen, self).__init__()
-        loadUi("data/ui/enigmaMachine.ui", self)
+        loadUi("ui/enigmaMachine.ui", self)
 
         #tombol switch to cipher machine
         self.backBut.clicked.connect(self.gotoCipher)
@@ -49,7 +49,7 @@ class mainScreen(QMainWindow):
     def __init__(self):
         #setup cipher screen (main screen)
         super(mainScreen, self).__init__()
-        loadUi("data/ui/cryptogui.ui", self)
+        loadUi("ui/cryptogui.ui", self)
     
         #tombol input file
         self.inputBut.clicked.connect(self.inputFile)
@@ -99,7 +99,7 @@ class mainScreen(QMainWindow):
             elif cipherMethod == "Extended Vigenere Cipher Encrypt":
                 if(self.pathFile != ""):
                     directory = os.path.dirname(os.path.realpath(__file__))
-                    filename = "data/output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
+                    filename = "output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(directory, filename)
 
@@ -139,7 +139,7 @@ class mainScreen(QMainWindow):
             elif cipherMethod == "Extended Vigenere Cipher Decrypt":
                 if(self.pathFile != ""):
                     directory = os.path.dirname(os.path.realpath(__file__))
-                    filename = "data/output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
+                    filename = "output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
 
                     full_path = os.path.join(directory, filename)
 
@@ -167,7 +167,7 @@ class mainScreen(QMainWindow):
 
         if("Extended Vigenere Cipher" not in cipherMethod):
             directory = os.path.dirname(os.path.realpath(__file__))
-            filename = "data/output/" + str(uuid.uuid4()) + ".txt"
+            filename = "output/" + str(uuid.uuid4()) + ".txt"
 
             full_path = os.path.join(directory, filename)
             f = open(full_path, 'w')
