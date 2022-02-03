@@ -49,7 +49,6 @@ def vigenereDec(cipher_text: str, key: str) -> str:
         curr_plain_text_num = (curr_cipher_text_num - curr_key_text_num) % 26
 
         plain_text += alf[curr_plain_text_num]
-
     return plain_text
 
 def vigenerestdEnc(plain_text: str, key: str):
