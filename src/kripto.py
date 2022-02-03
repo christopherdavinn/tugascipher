@@ -8,6 +8,7 @@ import extendedVigenere
 import playfairCipher
 import vigenere
 import enigmaCipher
+import onetimepad
 
 class otpScreen(QDialog):
     def __init__(self):
@@ -19,6 +20,21 @@ class otpScreen(QDialog):
         self.backBut.clicked.connect(self.gotoCipher)
         #tombol switch to enigma machine
         self.enigmaBut.clicked.connect(self.gotoEnigma) 
+
+
+        self.encBut.clicked.connect(onetimepad.otpEnc)
+        self.decBut.clicked.connect(onetimepad.otpDec)
+        self.padBut.clicked.connect(onetimepad.newPad)
+        self.inputText.setText('Type your message to be encypted here - limit is 400 characters')  
+        
+        #load combo boxes with one-time pads available
+        self.padList.clear()
+
+        i = 0
+        while os.path.exists("storage/Pad%s.txt" % i):
+            self.padList.addItem(f"{round(int(i),0)}")
+            i += 1
+        
 
     def gotoCipher(self):
         cipherMachine = mainScreen()

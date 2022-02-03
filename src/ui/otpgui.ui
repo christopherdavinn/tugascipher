@@ -151,7 +151,7 @@ font: 550 10pt &quot;MS Shell Dlg 2&quot;;</string>
     <string>Select One Time Pad to use</string>
    </property>
   </widget>
-  <widget class="QComboBox" name="padCombo_2">
+  <widget class="QComboBox" name="padList">
    <property name="geometry">
     <rect>
      <x>360</x>
