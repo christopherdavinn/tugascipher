@@ -58,7 +58,7 @@ class mainScreen(QMainWindow):
         #tombol switch to enigma machine
         self.enigmaBut.clicked.connect(self.gotoEnigma) 
 
-        self.pathFile = ""
+        self.path = ""
 
     def gotoEnigma(self):
         enigmaMachine = enigmaScreen()
@@ -67,19 +67,19 @@ class mainScreen(QMainWindow):
 
     def inputFile(self):
         file = QtWidgets.QFileDialog.getOpenFileName()
-        self.pathFile = file[0]
+        self.path = file[0]
 
-        self.inputBut.setText(self.pathFile.split('/')[-1])
+        self.inputBut.setText(self.path.split('/')[-1])
 
     def processFile(self):
         cipherMethod = self.cipheroption.currentText()
         pt = self.textInput.toPlainText()
         key = self.keyInput.toPlainText()
 
-        if(self.pathFile != ""):
-            ext = os.path.splitext(self.pathFile)[1]
+        if(self.path != ""):
+            ext = os.path.splitext(self.path)[1]
             if(ext == ".txt"):
-                f = open(self.pathFile)
+                f = open(self.path)
                 pt = f.read()
         if(len(key) == 0):
             return
@@ -89,29 +89,28 @@ class mainScreen(QMainWindow):
 #encrypt code
         if("encrypt" in cipherMethod.lower()):
             if cipherMethod == "Vigenere Cipher Standard Encrypt":
-                cipherText = vigenere.vigenerestdEnc(pt, key)
+                ct = vigenere.vigenerestdEnc(pt, key)
 
                 result += "Cipher Text:\n"
-                result += cipherText
+                result += ct
                 result += "\n\nCipher (per 5): \n"
-                result += ' '.join([cipherText[i: i+5] for i in range(0, len(cipherText), 5)])
+                result += ' '.join([ct[i: i+5] for i in range(0, len(ct), 5)])
 
             elif cipherMethod == "Extended Vigenere Cipher Encrypt":
-                if(self.pathFile != ""):
+                if(self.path != ""):
                     directory = os.path.dirname(os.path.realpath(__file__))
-                    filename = "output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
-
-                    full_path = os.path.join(directory, filename)
+                    fileName = "output/" + str(uuid.uuid4()) + os.path.splitext(self.path)[1]
+                    filePath = os.path.join(directory, fileName)
 
                     success = extendedVigenere.extvigenereEnc(
-                        self.pathFile, 
+                        self.path, 
                         key, 
-                        full_path
+                        filePath
                     )
 
                     if(success):
                         result += "Encrypt success!\n\n"
-                        result += "Filename: %s" %(filename)
+                        result += "Filename: %s" %(fileName)
                     else:
                         result += "Fail encrypt file"
                 else:
@@ -137,21 +136,20 @@ class mainScreen(QMainWindow):
                 result += ' '.join([pt[i: i+5] for i in range(0, len(pt), 5)])
 
             elif cipherMethod == "Extended Vigenere Cipher Decrypt":
-                if(self.pathFile != ""):
+                if(self.path != ""):
                     directory = os.path.dirname(os.path.realpath(__file__))
-                    filename = "output/" + str(uuid.uuid4()) + os.path.splitext(self.pathFile)[1]
-
-                    full_path = os.path.join(directory, filename)
+                    fileName = "output/" + str(uuid.uuid4()) + os.path.splitext(self.path)[1]
+                    filePath = os.path.join(directory, fileName)
 
                     success = extendedVigenere.extvigenereDec(
-                        self.pathFile, 
+                        self.path, 
                         key, 
-                        full_path
+                        filePath
                     )
 
                     if(success):
                         result += "Decrypt success!\n\n"
-                        result += "Filename: %s" %(filename)
+                        result += "Filename: %s" %(fileName)
                     else:
                         result += "Fail decrypt file"
                 else:
@@ -167,19 +165,19 @@ class mainScreen(QMainWindow):
 
         if("Extended Vigenere Cipher" not in cipherMethod):
             directory = os.path.dirname(os.path.realpath(__file__))
-            filename = "output/" + str(uuid.uuid4()) + ".txt"
+            fileName = "output/" + str(uuid.uuid4()) + ".txt"
+            filePath = os.path.join(directory, fileName)
 
-            full_path = os.path.join(directory, filename)
-            f = open(full_path, 'w')
+            f = open(filePath, 'w')
             f.write(result)
 
             result += "\n\n\n\n"
             result += "Success!\n\n"
-            result += "Filename: %s" %(filename)
+            result += "Filename: %s" %(fileName)
 
 #refresh input
         self.outputTB.setPlainText(result)
-        self.pathFile = ""
+        self.path = ""
         self.inputBut.setText("Input your file here!")
 
 #main prog
